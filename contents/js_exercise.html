@@ -50,6 +50,61 @@
 
     <h2>Your solution for exercise</h2>
 
+
+    <input id="txtFirstname" type="text" placeholder="Enter first name"/>
+    <input id="txtLastname" type="text" placeholder="Enter last name"/>
+    <input id="btnAdd" type="button" value="Add" onclick="add()" />
+    <input id="btnResetInput" type="button" value="Reset Input" onclick="resetInputs()" />
+    <input id="btnResetTable" type="button" value="Reset Table" onclick="resetTable()" />
+
+<table>
+    <thead>
+      <tr>
+        <td>First name</td>
+        <td>Last name</td>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <tr>
+        <td>Phattharajarin</td>
+        <td>Boonla</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    function resetInputs() {
+      document.getElementById('txtFirstname').value = '';
+      document.getElementById('txtLastname').value = '';
+    }
+
+    function add() {
+      let firstname = document.getElementById('txtFirstname').value;
+      let lastname = document.getElementById('txtLastname').value;
+
+      if (firstname.trim() === '' || lastname.trim() === '') {
+        alert('Please enter both first name and last name');
+        return;
+      }
+
+      let tableBody = document.getElementById('tableBody');
+      let newRow = tableBody.insertRow();
+
+      let cell1 = newRow.insertCell(0);
+      let cell2 = newRow.insertCell(1);
+
+      cell1.innerHTML = firstname;
+      cell2.innerHTML = lastname;
+
+      resetInputs(); 
+    }
+
+    function resetTable() {
+      let tableBody = document.getElementById('tableBody');
+      tableBody.innerHTML = ''; 
+    }
+  </script>
+
 </body>
 
 </html>
